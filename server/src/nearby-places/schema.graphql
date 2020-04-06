@@ -1,0 +1,10 @@
+type Place {
+    id: String!
+    name: String!
+    distance: Int,
+    formattedAddress: [String],
+}
+
+type Query {
+    getPlaces(geocodableLocation: String!): [Place]
+}
