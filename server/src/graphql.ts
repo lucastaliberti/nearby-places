@@ -9,7 +9,6 @@
 export interface Place {
     id: string;
     name: string;
-    distance?: number;
     formattedAddress?: string[];
 }
 
