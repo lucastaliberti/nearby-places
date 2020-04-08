@@ -35,4 +35,7 @@ const ResultsWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 50px 0 0 0;
+  @media (max-width: 768px) {
+    width: auto;
+  }
 `;

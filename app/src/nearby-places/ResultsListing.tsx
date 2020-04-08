@@ -23,7 +23,7 @@ function ResultsListing({
   data
 }: ResultsListingProps) {
   if (loading) {
-    return <FontAwesomeIcon icon={faSpinner} spin size="6x" />;
+    return <LoadingIcon icon={faSpinner} spin size="6x" />;
   }
 
   if (error) {
@@ -62,15 +62,17 @@ function ResultsListing({
   return <></>;
 }
 
+const LoadingIcon = styled(FontAwesomeIcon)`
+  display: block;
+  margin: auto;
+`;
+
 const CityLabelHeader = styled.h2`
   font-size: 21px;
   line-height: 140%;
   position: relative;
   width: 50%;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
 `;
 
 const ListName = styled.span``;
