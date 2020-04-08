@@ -23,7 +23,7 @@ function ResultsListing({
   data
 }: ResultsListingProps) {
   if (loading) {
-    return <LoadingIcon icon={faSpinner} spin size="6x" />;
+    return <LoadingIcon data-testid={'loadingIcon'} icon={faSpinner} spin size="6x" />;
   }
 
   if (error) {
@@ -59,7 +59,7 @@ function ResultsListing({
     );
   }
 
-  return <></>;
+  return null;
 }
 
 const LoadingIcon = styled(FontAwesomeIcon)`
