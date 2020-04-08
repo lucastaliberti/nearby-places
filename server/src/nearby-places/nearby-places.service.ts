@@ -62,4 +62,4 @@ type Venue = {
   };
 };
 
-class FoursquareAPIError extends Error {}
+export class FoursquareAPIError extends Error {}
