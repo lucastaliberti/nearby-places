@@ -33,9 +33,7 @@ it("renders a table with data", () => {
       }
     ]
   };
-  const { getByRole } = render(
-    <ResultsListing loading={false} data={data} />
-  );
-  const table = getByRole('table');
+  const { getByRole } = render(<ResultsListing loading={false} data={data} />);
+  const table = getByRole("table");
   expect(table).toBeInTheDocument();
 });
