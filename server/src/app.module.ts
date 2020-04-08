@@ -5,6 +5,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 
 import configuration from '../config/configuration';
 import { NearbyPlacesModule } from './nearby-places/nearby-places.module';
+import { ServeStaticModule } from "@nestjs/serve-static";
 
 @Module({
   imports: [
@@ -12,7 +13,12 @@ import { NearbyPlacesModule } from './nearby-places/nearby-places.module';
       load: [configuration],
     }),
     GraphQLModule.forRootAsync({
-      imports: [ConfigModule],
+      imports: [
+        ConfigModule,
+        ServeStaticModule.forRoot({
+          rootPath: path.join(__dirname, '../../..', 'app/build'),
+        }),
+      ],
       useFactory: async (configService: ConfigService) => ({
         debug: configService.get('env') === 'development',
         playground: configService.get('env') === 'development',
