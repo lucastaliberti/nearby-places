@@ -6,13 +6,13 @@
   "scripts": {
     "install:client": "cd app && yarn",
     "install:server": "cd server && yarn",
-    "heroku-postbuild": "npm-s install:server install:client",
+    "heroku-postbuild": "yarn install:server && yarn install:client",
     "test:client": "cd app && export CI=true && yarn test",
     "test:server": "cd server && export CI=true && yarn test",
-    "test": "run-s test:server test:client",
+    "test": "yarn test:server && yarn test:client",
     "start:client": "cd app && yarn start",
     "start:server": "cd server && yarn start",
-    "start": "run-p start:server start:client"
+    "start": "yarn start:server & yarn start:client"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,5 @@
     "url": "https://github.com/lucastaliberti/nearby-places/issues"
   },
   "homepage": "https://github.com/lucastaliberti/nearby-places#readme",
-  "dependencies": {
-    "npm-run-all": "^4.1.5"
-  }
+  "dependencies": {}
 }
