@@ -4,6 +4,9 @@
   "description": "React App with NestJS backend that display a list of nearby places",
   "main": "index.js",
   "scripts": {
+    "install:client": "cd app && yarn",
+    "install:server": "cd server && yarn",
+    "heroku-postbuild": "npm-s install:server install:client",
     "test:client": "cd app && export CI=true && yarn test",
     "test:server": "cd server && export CI=true && yarn test",
     "test": "run-s test:server test:client",
