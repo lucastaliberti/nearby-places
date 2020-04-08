@@ -99,6 +99,6 @@ const TableDataCell = styled.td`
 
 const TableHeadCell = styled(TableDataCell)`
   font-weight: bold;
-`
+`;
 
 export default ResultsListing;
