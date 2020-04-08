@@ -1,0 +1,28 @@
+{
+  "name": "nearby-places",
+  "version": "1.0.0",
+  "description": "React App with NestJS backend that display a list of nearby places",
+  "main": "index.js",
+  "scripts": {
+    "test:client": "cd app && export CI=true && yarn test",
+    "test:server": "cd server && export CI=true && yarn test",
+    "test": "run-s test:server test:client",
+    "start:client": "cd app && yarn start",
+    "start:server": "cd server && yarn start",
+    "start": "run-p start:server start:client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucastaliberti/nearby-places.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucastaliberti/nearby-places/issues"
+  },
+  "homepage": "https://github.com/lucastaliberti/nearby-places#readme",
+  "dependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
