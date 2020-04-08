@@ -5,11 +5,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import mapBg from "./map-bg.jpg";
 
-function SearchInput() {
+interface SearchInputProps {
+  handleLocationChange: (v: string) => void;
+  handleSearchDispatch: () => void;
+}
+
+function SearchInput({
+  handleLocationChange,
+  handleSearchDispatch
+}: SearchInputProps) {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleLocationChange(e.target.value);
+  };
+
+  const handleButtonClick = () => {
+    handleSearchDispatch();
+  };
+
   return (
     <InputContainer>
-      <Input placeholder={'Search a location'}/>
-      <Button>
+      <Input placeholder={"Search a location"} onChange={handleInputChange} />
+      <Button onClick={handleButtonClick}>
         <FontAwesomeIcon icon={faSearch} size="lg" />
         <ButtonLabel>Search</ButtonLabel>
       </Button>
@@ -22,8 +38,8 @@ const InputContainer = styled.div`
   align-items: center;
   justify-content: center;
   background-image: linear-gradient(
-      rgba(45,91,227,0.65),
-      rgba(45,91,227,0.65)
+      rgba(45, 91, 227, 0.65),
+      rgba(45, 91, 227, 0.65)
     ),
     url(${mapBg});
   padding: 50px 0;

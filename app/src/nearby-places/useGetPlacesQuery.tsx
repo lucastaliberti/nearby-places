@@ -1,4 +1,4 @@
-import { useQuery } from "@apollo/react-hooks";
+import { useLazyQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
 export function useGetPlacesQuery(location: string) {
@@ -12,7 +12,7 @@ export function useGetPlacesQuery(location: string) {
     }
   `;
 
-  return useQuery(GET_PLACES_QUERY, {
+  return useLazyQuery(GET_PLACES_QUERY, {
     variables: { location }
   });
 }

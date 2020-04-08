@@ -1,21 +1,25 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import { useGetPlacesQuery } from "./useGetPlacesQuery";
 import SearchInput from "./SearchInput";
+import ResultsListing from "./ResultsListing";
 
 export function NearbyPlaces() {
-  const { loading, error, data } = useGetPlacesQuery("Chicago, IL");
+  const [location, setLocation] = useState();
+  const [getPlaces, queryResults] = useGetPlacesQuery(location);
+
   return (
     <>
       <SearchContainer>
-        <SearchInput />
+        <SearchInput
+          handleLocationChange={setLocation}
+          handleSearchDispatch={getPlaces}
+        />
       </SearchContainer>
-      {loading && <FontAwesomeIcon icon={faSpinner} spin />}
-      {error && <pre>{JSON.stringify(error, null, 2)}</pre>}
-      {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
+      <ResultsWrapper>
+        <ResultsListing location={location} {...queryResults} />
+      </ResultsWrapper>
     </>
   );
 }
@@ -24,3 +28,11 @@ const SearchContainer = styled.div`
   background: rgba(45, 91, 227, 0.3);
 `;
 
+const ResultsWrapper = styled.div`
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 0 0 0;
+`;
